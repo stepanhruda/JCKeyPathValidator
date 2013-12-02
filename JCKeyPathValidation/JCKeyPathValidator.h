@@ -14,9 +14,4 @@
 ((void)(NO && ((void)anObject.aKeyPath, NO)), @ # aKeyPath )
 
 #define JCValidateKeyPathWithClass(aClass, aKeyPath) \
-((void)(NO && ((void)[[JCKeyPathValidator cachedInstanceForClass:[aClass class]] aKeyPath], NO)), @ # aKeyPath )
-
-@interface JCKeyPathValidator : NSObject
-+ (id)cachedInstanceForClass:(Class) klass;
-@end
-
+([aClass instancesRespondToSelector:NSSelectorFromString( @ # aKeyPath )] ? @ # aKeyPath : nil)

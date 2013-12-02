@@ -28,9 +28,17 @@
 }
 
 - (void)testValidClassKeyPath {
+  BOOL valid = ((void)self.testObject.testProperty, NO);
+
   XCTAssertEqual(JCValidateKeyPathWithClass([TestClass class], testProperty),
                  @"testProperty",
                  @"Should return string value of property \"testProperty\"");
+
+  NSLog(@"%@", JCValidateKeyPathWithClass([NSString class], foo));
+}
+
+- (void) testExpansion {
+  JCValidateKeyPath(self.testObject, testProperty);
 }
 
 #pragma mark -
